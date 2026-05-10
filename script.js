@@ -1,24 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Gestion du formulaire du guide
+    // 1. Gestion du formulaire du guide (Connexion réelle à Make/Airtable)
     const guideForm = document.getElementById('guide-form');
+    
     if (guideForm) {
         guideForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            
+            // Récupération des données
             const email = document.getElementById('email').value;
             const name = document.getElementById('name').value;
-            
-            // Simulation d'envoi
             const btn = guideForm.querySelector('button');
             const originalText = btn.innerHTML;
+
+            // État visuel : Chargement
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
             btn.disabled = true;
 
-            setTimeout(() => {
-                alert(`Succès ! Merci ${name || 'cher utilisateur'} ! Le guide de l'autonomie a été envoyé à : ${email}`);
+            // URL de ton Webhook Make
+            const urlMake = "https://hook.eu1.make.com/8dm13k5lutop1q3abuj1s121avbrmvi8";
+
+            // Envoi réel des données
+            fetch(urlMake, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    nom: name,
+                    email: email,
+                    projet: "SolarSkin"
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert(`Succès ! Merci ${name || 'cher utilisateur'} ! Vos données ont été enregistrées dans la base SolarSkin.`);
+                    guideForm.reset();
+                } else {
+                    throw new Error('Erreur serveur');
+                }
+            })
+            .catch(error => {
+                console.error("Erreur :", error);
+                alert("Oups, une erreur est survenue lors de l'envoi. Vérifie ta connexion.");
+            })
+            .finally(() => {
+                // Remise à l'état initial du bouton
                 btn.innerHTML = originalText;
                 btn.disabled = false;
-                guideForm.reset();
-            }, 1500);
+            });
         });
     }
 
@@ -32,21 +59,18 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // On n'anime qu'une seule fois
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Cibler les éléments à animer
     const animatedElements = document.querySelectorAll('.feature-card, .persona-card, .hero-content, .hero-image, .cta-card');
     
     animatedElements.forEach((el, index) => {
-        // Ajouter les styles initiaux via JS si on veut éviter le flash de contenu sans CSS
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
         
-        // Classe pour déclencher l'animation
         const style = document.createElement('style');
         style.innerHTML = `
             .visible {
@@ -55,11 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         `;
         document.head.appendChild(style);
-        
         observer.observe(el);
     });
 
-    // 3. Effet de scroll sur le header (réduction de taille)
+    // 3. Effet de scroll sur le header
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 80) {
@@ -73,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 4. Smooth scroll pour les liens d'ancrage
+    // 4. Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
