@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 // Envoi à ton Webhook Make
-                const response = await fetch('https://hook.eu1.make.com/8dm13k5lutop1q3abuj1s121avbrm', {
+                const response = await fetch('https://hook.eu1.make.com/a9qql3mxwf3u6pdwiwzehj1mvn5a5fu5', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
