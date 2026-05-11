@@ -195,15 +195,15 @@
                         <h3>Recevez le Guide Gratuitement</h3>
                         <form id="guide-form">
                             <div class="form-group">
-                                <label for="email">Votre Email</label>
-                                <input type="email" id="email" placeholder="vous@exemple.com" required>
+                                <label for="name">Votre Nom</label>
+                                <input type="text" id="name" name="nom" placeholder="Jean Dupont" required>
                             </div>
                             <div class="form-group">
-                                <label for="name">Votre Nom (Optionnel)</label>
-                                <input type="text" id="name" placeholder="Jean Dupont">
+                                <label for="email">Votre Email</label>
+                                <input type="email" id="email" name="email" placeholder="vous@exemple.com" required>
                             </div>
                             <div class="checkbox-group">
-                                <input type="checkbox" id="consent" required>
+                                <input type="checkbox" id="consent" name="consent" required>
                                 <label for="consent">J'accepte de recevoir des emails de Solar-Skin.</label>
                             </div>
                             <button type="submit" class="btn btn-primary btn-full">Télécharger le Guide</button>
@@ -264,6 +264,59 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <section id="contact-section" class="contact-form-section">
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="form-info">
+                <h2>Rejoignez l'aventure</h2>
+                <p>Complétez vos informations pour recevoir votre guide et rester informé des nouveautés Solar-Skin.</p>
+            </div>
+            
+            <form id="solar-skin-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="last-name">Nom</label>
+                        <input type="text" id="last-name" name="nom" placeholder="Dupont" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name">Prénom</label>
+                        <input type="text" id="first-name" name="prenom" placeholder="Jean" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email professionnel</label>
+                    <input type="email" id="email" name="email" placeholder="jean.dupont@exemple.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Statut</label>
+                    <select id="status" name="statut" required>
+                        <option value="" disabled selected>Sélectionnez votre profil</option>
+                        <option value="Particulier">Particulier</option>
+                        <option value="Professionnel">Professionnel</option>
+                        <option value="Etudiant">Étudiant</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Votre message ici..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-button">
+                    Envoyer les informations
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>
