@@ -35,16 +35,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    successEl.style.display = 'block';
+                    // Masquer le formulaire et afficher le message de succès
+                    form.style.opacity = "0.5";
+                    form.style.pointerEvents = "none";
+                    document.getElementById('form-success').style.display = 'block';
+                    document.getElementById('form-error').style.display = 'none';
                     form.reset();
+                    
+                    // Optionnel : Rediriger vers le PDF après 3 secondes
+                    // setTimeout(() => { window.location.href = "URL_DE_TON_GUIDE.pdf"; }, 3000);
                 } else {
-                    errorEl.style.display = 'block';
+                    throw new Error();
                 }
             } catch (error) {
-                console.error("Erreur:", error);
-                errorEl.style.display = 'block';
+                document.getElementById('form-error').style.display = 'block';
             } finally {
-                btn.innerText = "Envoyer les informations";
+                btn.innerText = originalText;
                 btn.disabled = false;
             }
         });
