@@ -421,7 +421,7 @@ nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
     background: rgba(255, 255, 255, 0.03);
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
     border: none solid rgba(255, 255, 255, 0.1);
     align-items: center;
@@ -435,7 +435,7 @@ nav {
     }
 }
 .cta-card {
-    border-radius: 20px; /* Coins plus arrondis pour un look moderne */
+    border-radius: 10px; /* Coins plus arrondis pour un look moderne */
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Ombre plus douce */
     border: none; /* Supprime la bordure si l'ombre est assez forte */
@@ -503,15 +503,21 @@ nav {
 }
 
 .cta-form-container {
-    padding: 60px;
+   
+    padding: 30px; /* Réduit de 60px à 30px pour gagner de l'espace */
     background: var(--white);
-    margin: 40px;
-    border-radius: 32px;
+    margin: 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre le contenu verticalement */
+    align-items: center;
+    height: 30%; /* S'assure que le fond blanc couvre toute la hauteur */
 }
 
-.cta-form-container h3 {
-    margin-bottom: 24px;
-    color: var(--secondary);
+.cta-form-container p {
+    margin-bottom: 18px;
+    font-size: 0.95rem; /* Réduit un peu la taille du texte pour gagner de la place */
+    max-width: 280px; /* Limite la largeur du texte pour éviter qu'il ne s'étale trop */
     text-align: center;
 }
 
