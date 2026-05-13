@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 nom:     formData.get('nom'),
                 prenom:  formData.get('prenom'),
                 email:   formData.get('email'),
-                statut:  formData.get('statut'),
                 message: formData.get('message')
             };
 
