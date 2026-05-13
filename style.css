@@ -421,10 +421,42 @@ nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
     background: rgba(255, 255, 255, 0.03);
-    border-radius: 40px;
+    border-radius: 20px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: none solid rgba(255, 255, 255, 0.1);
     align-items: center;
+    /* Amélioration de la carte CTA */
+@media (max-width: 1024px) {
+    .cta-card { 
+        grid-template-columns: 1fr; 
+    }
+    .cta-form-container {
+        padding: 40px 20px;
+    }
+}
+.cta-card {
+    border-radius: 20px; /* Coins plus arrondis pour un look moderne */
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Ombre plus douce */
+    border: none; /* Supprime la bordure si l'ombre est assez forte */
+}
+
+/* Style spécifique pour le texte de droite */
+.cta-form-container h3 {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: 15px;
+}
+
+/* Bouton plus dynamique */
+.btn-primary {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(255, 184, 28, 0.4);
+}
 }
 
 .cta-text {
